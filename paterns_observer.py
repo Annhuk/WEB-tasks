@@ -6,6 +6,7 @@ class Observer(ABC):
     def update(self, temperature):
         pass
 
+
 class PhoneApp(Observer):
     def __init__(self, name):
         self.name = name
@@ -13,9 +14,13 @@ class PhoneApp(Observer):
     def update(self, temperature):
         print(f"{self.name} App: New temperature update -> {temperature}°C")
 
+
 class DesktopApp(Observer):
+    def __init__(self, name):
+        self.name = name
+
     def update(self, temperature):
-        print(f"Desktop App: Temperature updated to {temperature}°C")
+        print(f"{self.name} Desktop App: Temperature updated to {temperature}°C")
 
 
 class Subject(ABC):
@@ -30,6 +35,7 @@ class Subject(ABC):
     @abstractmethod
     def notify_observers(self):
         pass
+
 
 class WeatherStation(Subject):
     def __init__(self):
@@ -51,14 +57,14 @@ class WeatherStation(Subject):
         for observer in self.observers:
             observer.update(self.temperature)
 
-# Client Code
+
 if __name__ == "__main__":
 
     station = WeatherStation()
 
-    app1 = PhoneApp("WeatherX")
-    app2 = PhoneApp("WeatherNow")
-    desktop = DesktopApp()
+    app1 = PhoneApp("SYNOPTYK")
+    app2 = PhoneApp("Summer soon")
+    desktop = DesktopApp("Meteo Mateo")
 
     station.add_observer(app1)
     station.add_observer(app2)
