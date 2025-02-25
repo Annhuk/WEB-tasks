@@ -9,27 +9,25 @@ class Vehicle(ABC):
 
 class Car(Vehicle):
     def get_type(self):
-        return "Car: A comfortable vehicle for families."
+        return "Car: A comfortable vehicle for people to drive from point A to point B."
 
 
 class Truck(Vehicle):
     def get_type(self):
-        return "Truck: Used for transporting heavy goods."
+        return "Truck: A vehicle used for transporting heavy goods."
 
 
 class Motorcycle(Vehicle):
     def get_type(self):
-        return "Motorcycle: A two-wheeled vehicle for fast commuting."
+        return "Motorcycle: A two-wheeled vehicle for fast commuting, good choice to avoid traffic jams:)."
 
 
-# Abstract Creator
 class VehicleFactory(ABC):
     @abstractmethod
     def create_vehicle(self):
         pass
 
 
-# Concrete Creators
 class CarFactory(VehicleFactory):
     def create_vehicle(self):
         return Car()
